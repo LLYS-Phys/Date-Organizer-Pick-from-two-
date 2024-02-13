@@ -7,4 +7,77 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pick_from_two';
+
+  selectedCards : string[] = []
+
+  ideas = [
+    "Go to the Cinema",
+    "Netflix & Chill",
+    "Go to a Bar",
+    "Board Games Night",
+    "Video Games Night",
+    "Go to a Restaurant",
+    "Cook Together",
+    "Go on a Picknick",
+    "Take a trip",
+    "Play Music",
+    "Explore the City",
+    "Dance Together",
+    "Visit the Zoo/Museum/Gallery",
+    "Go out for Dessert",
+    "Karaoke Night",
+    "Arts & Craft Time",
+    "Go for a Coffee",
+    "Go play Billiards/Bowling/etc.",
+    "Karting/Zone52/etc.",
+    "No Tech Evening",
+    "Go to a Standup Comedy Show",
+    "Go to the Dog Shelter",
+    "Rock-Paper-Scissors Date",
+  ]
+
+  screen = 1
+  custom : string[] = []
+
+  selectCard(idea: string){
+    if (this.selectedCards.includes(idea)){
+      let index = this.selectedCards.indexOf(idea)
+      this.selectedCards.splice(index, 1)
+    }
+    else{
+      if (this.selectedCards.length>=2){
+        this.selectedCards.splice(-1)
+        this.selectedCards.push(idea)
+      }
+      else{
+        this.selectedCards.push(idea)
+      }
+    }
+    
+    console.log(this.selectedCards)
+    let cards = document.getElementsByClassName('card')
+    for (let i=0; i<this.ideas.length; i++){
+      let item = cards[i].textContent?.toString()!
+      if (this.selectedCards.includes(item)){
+        console.log(cards[i])
+        cards[i].classList.add('green')
+      }
+      else{
+        cards[i].classList.remove('green')
+      }
+    }
+  }
+
+  customCard(num: number){
+    
+  }
+
+  next(){
+    this.screen = 2
+  }
+
+  openCard(card: any){
+    let index = this.selectedCards.indexOf(card)
+    document.getElementsByClassName("open-card")[index].classList.remove("hidden")
+  }
 }
