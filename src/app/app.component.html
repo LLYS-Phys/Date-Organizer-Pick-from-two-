@@ -1,7 +1,7 @@
 <div class="top">
   <h1>Date Organizer</h1>
 </div>
-<div id="screen1" *ngIf="screen==1">
+<div id="screen1" *ngIf="screen==1" (click)="coloring()">
   <h2>Choose 2 activities:</h2>
   <div class="cards">
     <div class="pre-defined">
@@ -13,11 +13,11 @@
     </div>
     <h2>Or write down your own ideas</h2>
     <div class="custom">
-      <div class="custom-idea" (click)="customCard(0)">
-        <textarea type="textarea" placeholder="Custom Idea.." rows="4" (input)="customCard(0)"></textarea>
+      <div class="custom-idea" (click)="addEntry('0')">
+        <textarea type="textarea" placeholder="Custom Idea.." rows="4" (change)="addEntry('0')"></textarea>
       </div>
-      <div class="custom-idea" (click)="customCard(1)">
-        <textarea type="textarea" placeholder="Custom Idea.." rows="4" (input)="customCard(1)"></textarea>
+      <div class="custom-idea" (click)="addEntry('1')">
+        <textarea type="textarea" placeholder="Custom Idea.." rows="4" (change)="addEntry('1')"></textarea>
       </div>
     </div>
     <div class="next-container" *ngIf="selectedCards.length==2">
@@ -27,11 +27,17 @@
 </div>
 <div id="screen2" *ngIf="screen==2">
   <h2>Choose one and we will do it:</h2>
+  <div class="choice">
+    <h2>We are going to:</h2>
+  </div>
   <div class="cards-selected">
-    <div class="card" *ngFor="let card of selectedCards;" (click)="openCard(card)">
+    <div class="card card-selected" *ngFor="let card of selectedCards;" (click)="openCard(card)">
       <div class="container">
         <p class="open-card hidden">{{card}}</p>
       </div>
     </div>
+  </div>
+  <div class="back-container" *ngIf="selectedCards.length==2">
+    <div class="back" (click)="back()"></div>
   </div>
 </div>
