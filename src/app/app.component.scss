@@ -124,9 +124,8 @@ h2{
 .back-container{
     display: flex;
     justify-content: start;
-    margin-top: -35%;
-    position: absolute;
-    bottom: 5%;
+    position: relative;
+    margin-top: 10%;
     .back{
         cursor: pointer;
         position:relative;
