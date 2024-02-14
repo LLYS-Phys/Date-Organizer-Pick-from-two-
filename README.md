@@ -1,5 +1,8 @@
 # PickFromTwo
 
+An app for your partner to pick what to do depending on two options you choose:
+https://llys-phys.github.io/Date-Organizer-Pick-from-two-/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
 ## Development server
